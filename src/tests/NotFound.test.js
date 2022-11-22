@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import renderWithRouter from '../renderWithRouter';
-import App from '../App';
+import NotFound from '../pages/NotFound';
 
 test('Verificando se da pagina não encontrada e img', () => {
-  const { history } = renderWithRouter(<App />);
+  const { history } = renderWithRouter(<NotFound />);
 
   const urlInvalida = 'details';
 
