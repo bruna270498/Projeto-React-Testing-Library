@@ -19,5 +19,5 @@ test('Verificando se da pagina não encontrada e img', () => {
   });
 
   expect(pagNaoEncontrada).toBeInTheDocument();
-  expect(img).toBeInTheDocument();
+  expect(img).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif' );
 });
