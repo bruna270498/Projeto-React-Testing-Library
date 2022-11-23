@@ -25,6 +25,7 @@ describe('verificando page de Pokedex', () => {
       const nomePoke = pokemon.name;
       expect(nomePoke).toBe(data[index].name);
     });
+    expect(screen.queryAllByTestId('pokemon-name').length).toBe(1);
   });
   test('Verificando se o Pokedex tem o botão de filtro', () => {
     renderWithRouter(<App />);
@@ -33,6 +34,9 @@ describe('verificando page de Pokedex', () => {
       const btn = e.innerHTML;
       expect(btn).toBe(e.innerHTML);
     });
+    const btnEletric = button[0];
+    userEvent.click(btnEletric);
+    expect(btnEletric.innerHTML).toBe(data[0].type);
   });
   test('Testando botão TUDO', () => {
     renderWithRouter(<App />);
