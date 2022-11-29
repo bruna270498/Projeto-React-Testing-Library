@@ -16,6 +16,7 @@ describe('', () => {
     expect(linkDetalhes).not.toBeInTheDocument();
     const SubTitulo = screen.getByRole('heading', { name: /summary/i, level: 2 });
     expect(SubTitulo).toBeInTheDocument();
+
     // const nomeHtml = screen.getByTestId('pokemon-name');
     // const nome = nomeHtml.innerHTML;
     // const [, pokemonId] = history.location.way(/ pokémon \/ ( \d + ) /);

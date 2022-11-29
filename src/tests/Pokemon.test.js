@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-describe('', () => {
+describe('Verificando a tela do Pokemon', () => {
   test('Testando se mostra as informaçoes do pokemon na tela', () => {
     renderWithRouter(<App />);
     const img = screen.getByRole('img', {
@@ -16,9 +16,10 @@ describe('', () => {
 
     expect(peso).toBeInTheDocument();
     expect(tipo).toBeInTheDocument();
+    expect(tipo).not.toBe('');
     expect(nome).toBeInTheDocument();
     expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+    expect(img).toHaveAttribute('src', img.src);
   });
   test('Testando se tem o link de navegação no card', () => {
     renderWithRouter(<App />);
@@ -30,6 +31,9 @@ describe('', () => {
     const detalhes = screen.getByRole('heading', { name: /pikachu details/i });
     expect(detalhes).toBeInTheDocument();
     expect(linkDetalhes).toHaveAttribute('href', '/pokemon/25');
+
+    const tipo = screen.getByTestId('pokemon-type');
+    expect(tipo.innerHTML).toBe('Electric');
 
     const pokeNome = screen.getByTestId('pokemon-name');
     expect(pokeNome).toBeInTheDocument();
