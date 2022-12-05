@@ -29,6 +29,7 @@ describe('Testando a tela do Pokemon Detalhes', () => {
       if (name === 'Pikachu') {
         return summary;
       }
+      return summary;
     });
     expect(texto.summary).toBe('This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.');
   });
@@ -45,6 +46,7 @@ describe('Testando a tela do Pokemon Detalhes', () => {
       if (name === 'Pikachu') {
         return foundAt;
       }
+      return foundAt;
     });
 
     expect(localizacao.foundAt).toBe(localizacao.foundAt);
