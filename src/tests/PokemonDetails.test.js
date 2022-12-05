@@ -16,7 +16,7 @@ describe('Testando a tela do Pokemon Detalhes', () => {
     expect(titulo).toBeInTheDocument();
     expect(linkDetalhes).not.toBeInTheDocument();
   });
-  test('Testando se tem o subTítulo com h2', () => {
+  test('Testando se tem o subTítulo com h2 e o paragrafo com informação do pokemon', () => {
     renderWithRouter(<App />);
 
     const linkDetalhes = screen.getByRole('link', { name: /More details/i });
@@ -61,6 +61,25 @@ describe('Testando a tela do Pokemon Detalhes', () => {
     expect(imgMap[0]).toHaveAttribute('alt', 'Pikachu location');
     expect(imgMap[1]).toHaveAttribute('alt', 'Pikachu location');
     expect(imgMap[0]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
-    expect(imgMap[1]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png')
+    expect(imgMap[1]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
+  });
+  test('Teste se o usuário pode favoritar um Pokémon através da página de detalhes', async () => {
+    renderWithRouter(<App />);
+
+    const linkDetalhes = screen.getByRole('link', { name: /More details/i });
+    userEvent.click(linkDetalhes);
+
+    const labelFavorito = screen.getByText(/favorite pokémon?/i);
+    expect(labelFavorito).toBeInTheDocument();
+
+    const checkBoxFavorito = await screen.getByRole('checkbox');
+    expect(checkBoxFavorito).toBeInTheDocument();
+
+    userEvent.click(checkBoxFavorito);
+
+    expect(checkBoxFavorito.checked).toBe(true);
+
+    userEvent.click(checkBoxFavorito);
+    expect(checkBoxFavorito.checked).toBe(false);
   });
 });
