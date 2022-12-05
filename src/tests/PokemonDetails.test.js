@@ -16,13 +16,13 @@ describe('Testando a tela do Pokemon Detalhes', () => {
     expect(titulo).toBeInTheDocument();
     expect(linkDetalhes).not.toBeInTheDocument();
   });
-  test('Testando se tem o subTítulo com h2 e o paragrafo com informação do pokemon', () => {
+  test('Testando se tem o subTítulo com h2 e o paragrafo com informação do pokemon', async () => {
     renderWithRouter(<App />);
 
-    const linkDetalhes = screen.getByRole('link', { name: /More details/i });
+    const linkDetalhes = await screen.getByRole('link', { name: /More details/i });
     userEvent.click(linkDetalhes);
 
-    const SubTitulo = screen.getByRole('heading', { name: /summary/i, level: 2 });
+    const SubTitulo = await screen.getByRole('heading', { name: /summary/i, level: 2 });
     expect(SubTitulo).toBeInTheDocument();
 
     const texto = pokemonList.find(({ name, summary }) => {
@@ -33,13 +33,13 @@ describe('Testando a tela do Pokemon Detalhes', () => {
     });
     expect(texto.summary).toBe('This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.');
   });
-  test('Teste se existe na página uma seção com os mapas contendo as localizações do Pokémon', () => {
+  test('Teste se existe na página uma seção com os mapas contendo as localizações do Pokémon', async () => {
     renderWithRouter(<App />);
 
-    const linkDetalhes = screen.getByRole('link', { name: /More details/i });
+    const linkDetalhes = await screen.getByRole('link', { name: /More details/i });
     userEvent.click(linkDetalhes);
 
-    const subTituloMap = screen.getByRole('heading', { name: /Game Locations of pikachu/i, level: 2 });
+    const subTituloMap = await screen.getByRole('heading', { name: /Game Locations of pikachu/i, level: 2 });
     expect(subTituloMap).toBeInTheDocument();
 
     const localizacao = pokemonList.find(({ name, foundAt }) => {
@@ -53,10 +53,10 @@ describe('Testando a tela do Pokemon Detalhes', () => {
     expect(localizacao.foundAt[0].location).toBe('Kanto Viridian Forest');
     expect(localizacao.foundAt[1].location).toBe('Kanto Power Plant');
   });
-  test('Testando se é exibido o nome da localização e imagem', () => {
+  test('Testando se é exibido o nome da localização e imagem', async () => {
     renderWithRouter(<App />);
 
-    const linkDetalhes = screen.getByRole('link', { name: /More details/i });
+    const linkDetalhes = await screen.getByRole('link', { name: /More details/i });
     userEvent.click(linkDetalhes);
 
     const imgMap = screen.getAllByRole('img', { name: /pikachu location/i });
@@ -71,7 +71,7 @@ describe('Testando a tela do Pokemon Detalhes', () => {
     const linkDetalhes = screen.getByRole('link', { name: /More details/i });
     userEvent.click(linkDetalhes);
 
-    const labelFavorito = screen.getByText(/favorite pokémon?/i);
+    const labelFavorito = screen.getByText(/Pokémon favoritado?/i);
     expect(labelFavorito).toBeInTheDocument();
 
     const checkBoxFavorito = await screen.getByRole('checkbox');
