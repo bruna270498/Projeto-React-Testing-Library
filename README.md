@@ -32,7 +32,7 @@ Neste projeto foi criado testes para uma aplicação já existente.
 
 - git@github.com:bruna270498/Projeto-React-Testing-Library.git
 
-# Instale as 
+# Instale as dependências
 
 - npm install.
 ```
