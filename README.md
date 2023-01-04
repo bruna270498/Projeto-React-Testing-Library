@@ -21,6 +21,20 @@ Neste projeto foi criado testes para uma aplicação já existente.
 - Escrever testes que causam a refatoração da estrutura dos componentes da aplicação sem necessidade de serem alterados;
 - Entradas Testar.
 
-## Co
+##  Teste aprovado.
 
 ![imagem](testepassando.png)
+
+## Como executar:
+
+```bash
+# clonar repositório
+
+# Instale as dependências
+- npm install.
+```
+
+
+## Colaboradores:
+
+Esta aplicação de Pokedéx foi criada pela Trybe. A minha participação foi somente a criação de testes.
