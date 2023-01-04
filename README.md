@@ -30,7 +30,10 @@ Neste projeto foi criado testes para uma aplicação já existente.
 ```bash
 # clonar repositório
 
-# Instale as dependências
+- git@github.com:bruna270498/Projeto-React-Testing-Library.git
+
+# Instale as 
+
 - npm install.
 ```
 
